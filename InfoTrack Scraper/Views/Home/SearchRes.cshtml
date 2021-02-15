@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewBag.Title = "Search Results";
+    var space = ", ";
+}
+
+<h2>Search Results</h2>
+<br />
+<p>I have already set the first search results to "<b>land registry search</b>".<br />If you would like to change the search please use the search box below or a URL<br />Thank you</p>
+<br />
+
+@using (Html.BeginForm("Searchres", "Home", FormMethod.Post))
+{
+    <p>Please search or type a URL</p>
+    <div class="form-group">
+        <label for="Search">Search Keyword</label>
+        <input type="text" class="form-control" id="Search" name="Search">
+    </div>
+    <p>Or</p>
+    <div class="form-group">
+        <label for="URL">Enter Full URL</label>
+        <input type="text" class="form-control" id="URL" name="URL">
+    </div>
+    <br />
+    <button type="submit" class="btn btn-primary">Search</button>
+}
+
+<br />
+<p>Results as of @DateTime.Now</p>
+
+<table class="tableL" style="width:450px;">
+    <tr>
+        <th class="tableL" style="padding:0 10px 0 10px; overflow:hidden;">Appeared in Search</th>
+        <th class="tableL">At Position(s)</th>
+    </tr>
+    <tr>
+        <td class="tableL">
+            @foreach (var res1 in ViewBag.r)
+            {
+                @res1
+                break;
+            }
+        </td>
+        <td class="tableL">
+            @foreach (var res2 in ViewBag.rr)
+            {
+                @res2 @space
+            }
+        </td>
+    </tr>
+</table>
+
